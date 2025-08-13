@@ -154,7 +154,7 @@ const NavBar = ({ window, children }: Props) => {
                         }}
                       >
                         {navigationItems.solutions.children.map((child) => (
-                          <MenuItem onClick={handleClose}>
+                          <MenuItem onClick={handleClose} key={child.id}>
                             <ListItemIcon>{child.icon}</ListItemIcon>
                             <ListItemText>
                               <Typography>{child.label}</Typography>
@@ -222,7 +222,7 @@ const NavBar = ({ window, children }: Props) => {
             },
           }}
         >
-          <CustomDrawer toggleDrawer={handleDrawerToggle} />
+          <CustomDrawer />
         </Drawer>
       </nav>
       <Box component="main" sx={{ width: "100%" }}>

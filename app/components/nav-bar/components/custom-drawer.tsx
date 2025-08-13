@@ -17,11 +17,7 @@ import { usePathname } from "next/navigation";
 import navigationItems from "../utils/navigation-data";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-interface DrawerProps {
-  toggleDrawer: () => void;
-}
-
-const CustomDrawer = ({ toggleDrawer }: DrawerProps) => {
+const CustomDrawer = () => {
   const pathname = usePathname();
   const [openSolutions, setOpenSolutions] = useState(true);
   const toggleOpenSolutions = () => {
@@ -66,7 +62,7 @@ const CustomDrawer = ({ toggleDrawer }: DrawerProps) => {
           <Collapse in={openSolutions} timeout="auto" unmountOnExit>
             <List component="div" disablePadding sx={{ pl: 2 }}>
               {navigationItems.solutions.children.map((child) => (
-                <ListItemButton>
+                <ListItemButton key={child.id}>
                   <ListItemIcon>{child.icon}</ListItemIcon>
                   <ListItemText
                     primary={child.label}
@@ -96,15 +92,19 @@ const CustomDrawer = ({ toggleDrawer }: DrawerProps) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <Grid container justifyContent="center" sx={{width: "100%", pt: 3}}>
+            <Grid
+              container
+              justifyContent="center"
+              sx={{ width: "100%", pt: 3 }}
+            >
               <Button
                 component={Link}
-                href={navigationItems.contactUs.path} 
+                href={navigationItems.contactUs.path}
                 size="large"
                 variant="contained"
                 sx={{ textAlign: "center" }}
               >
-                {navigationItems.contactUs.label} 
+                {navigationItems.contactUs.label}
               </Button>
             </Grid>
           </ListItem>
