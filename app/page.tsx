@@ -1,7 +1,8 @@
 "use client";
 import NavBar from "./components/nav-bar/nav-bar";
 import Banner from "./components/banner/banner";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ServiceCarousel from "./components/service-carousel/service-carousel";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
           buttonIcon={CalendarMonthIcon}
           handler={() => console.log("Contact Us")}
         />
+        <ServiceCarousel />
       </NavBar>
     </>
   );
