@@ -15,7 +15,9 @@ const CustomThemeContext = createContext<CustomThemeContextType | undefined>(
 const globalTheme = {
   cssVariables: true,
   typography: {
-    fontFamily: "var(--font-roboto)",
+    // fontFamily: "var(--font-roboto)",
+    // fontFamily: "var(--font-montserrat)",
+    fontFamily: "var(--font-open-sans)",
   },
 };
 
