@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import expertsDetails from "../../utils/experts-data";
 import ExpertCard from "./expert-card";
 import {
@@ -16,36 +16,46 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useCustomTheme } from "@/theme";
 
 const ExpertsCarousel = () => {
-  const { darkMode } = useCustomTheme();
   const theme = useTheme();
+  const { darkMode } = useCustomTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const cardsToShow = isSmallScreen ? 1 : 3;
 
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("left");
 
-  const handleNext = () => {
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startAutoSlide = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      handleNext(false);
+    }, 5000);
+  };
+
+  const handleNext = (manual = true) => {
     setDirection("left");
     setIndex((prev) =>
       prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
     );
+    if (manual) startAutoSlide();
   };
 
-  const handlePrev = () => {
+  const handlePrev = (manual = true) => {
     setDirection("right");
     setIndex((prev) =>
       prev - cardsToShow < 0
         ? Math.max(expertsDetails.length - cardsToShow, 0)
         : prev - cardsToShow
     );
+    if (manual) startAutoSlide();
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 5000);
-
-    return () => clearInterval(interval);
+    startAutoSlide();
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, [cardsToShow]);
 
   const currentExperts = expertsDetails.slice(index, index + cardsToShow);
@@ -107,7 +117,7 @@ const ExpertsCarousel = () => {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <IconButton color="primary" onClick={handlePrev}>
+                  <IconButton color="primary" onClick={() => handlePrev(true)}>
                     <ChevronLeftIcon />
                   </IconButton>
 
@@ -125,7 +135,7 @@ const ExpertsCarousel = () => {
                     </Slide>
                   ))}
 
-                  <IconButton color="primary" onClick={handleNext}>
+                  <IconButton color="primary" onClick={() => handleNext(true)}>
                     <ChevronRightIcon />
                   </IconButton>
                 </Grid>
