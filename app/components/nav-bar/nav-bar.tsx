@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import LaunchIcon from '@mui/icons-material/Launch';
+import LaunchIcon from "@mui/icons-material/Launch";
 import { useState, ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -53,11 +53,13 @@ const NavBar = ({ window, children }: Props) => {
       />
       <Divider />
       <List>
-        {navItems.map((item, index) => (
-          <List>
-            {navItems.map((item, index) => (
+        <List>
+          {navItems.map((item, index) => {
+            const isActive = pathname === item.path;
+            return (
               <ListItem key={index} disablePadding>
                 <ListItemButton
+                  selected={isActive}
                   component={Link}
                   href={item.path}
                   sx={{ textAlign: "center" }}
@@ -65,9 +67,27 @@ const NavBar = ({ window, children }: Props) => {
                   <ListItemText primary={item.label} />
                 </ListItemButton>
               </ListItem>
-            ))}
-          </List>
-        ))}
+            );
+          })}
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              href=""
+              sx={{ textAlign: "center" }}
+            >
+              <ListItemText primary="Learning" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton
+              component={Link}
+              href=""
+              sx={{ textAlign: "center" }}
+            >
+              <ListItemText primary="Contact Us" />
+            </ListItemButton>
+          </ListItem>
+        </List>
       </List>
     </Box>
   );
@@ -111,40 +131,49 @@ const NavBar = ({ window, children }: Props) => {
                 </Grid>
               </Grid>
               <Grid size="auto">
-                <Grid
-                  container
-                  spacing={3}
-                  sx={{ display: { xs: "none", md: "flex" } }}
-                >
-                  {navItems.map((item) => {
-                    const isActive = pathname === item.path;
-                    return (
-                      <Button
-                        key={item.label}
-                        component={Link}
-                        href={item.path}
-                        color="primary"
-                        sx={{
-                          borderBottom: isActive
-                            ? "2px solid currentColor"
-                            : "none",
-                          borderRadius: 0,
-                        }}
-                      >
-                        {item.label}
+                <Grid container spacing={3}>
+                  <Grid size="auto">
+                    <Grid
+                      container
+                      spacing={3}
+                      sx={{ display: { xs: "none", md: "flex" } }}
+                    >
+                      {navItems.map((item) => {
+                        const isActive = pathname === item.path;
+                        return (
+                          <Button
+                            key={item.label}
+                            component={Link}
+                            href={item.path}
+                            color="primary"
+                            sx={{
+                              borderBottom: isActive
+                                ? "2px solid currentColor"
+                                : "none",
+                              borderRadius: 0,
+                            }}
+                          >
+                            {item.label}
+                          </Button>
+                        );
+                      })}
+                      <Button endIcon={<LaunchIcon />} href="/learning">
+                        Learning
                       </Button>
-                    );
-                  })}
-
-                  <Button endIcon={<LaunchIcon />} href="/learning">
-                    Learning
-                  </Button>
-                  <Button variant="contained" href="/contact">
-                    Get in touch
-                  </Button>
-                  <IconButton color="primary" onClick={toggleDarkMode}>
-                    <DarkModeIcon />
-                  </IconButton>
+                    </Grid>
+                  </Grid>
+                  <Grid
+                    container
+                    spacing={2}
+                    sx={{ display: { xs: "none", sm: "flex" } }}
+                  >
+                    <Button variant="contained" href="/contact">
+                      Get in touch
+                    </Button>
+                    <IconButton color="primary" onClick={toggleDarkMode}>
+                      <DarkModeIcon />
+                    </IconButton>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
