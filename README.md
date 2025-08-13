@@ -23,7 +23,7 @@ Description...
 
 #### Step 1: Pre-requisites
 
-- Node.js on [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)/[Windows](https://nodejs.org/dist/v20.17.0/)
+- Node.js on [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)/[Windows]([https://nodejs.org/dist/v20.17.0/](https://nodejs.org/en/blog/release/v22.18.0))
   - Preferred to install Node Version Manager (NVM) for [Ubuntu](https://tecadmin.net/how-to-install-nvm-on-ubuntu-22-04/)/[Windows](https://github.com/coreybutler/nvm-windows/releases).
   - Open a terminal and then type `nvm install 22.18.0` to install Node.js 22.18.0
   - Then type `nvm use 22.18.0` to use the Node.js v22.18.0 to install node packages
