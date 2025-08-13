@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import expertsDetails from "../../utils/experts-data";
-import ExpertCard from "./expert-card";
+import TeamCard from "./team-card";
 import {
   Box,
   Grid,
@@ -14,7 +14,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import CustomPaper from "@/app/components/custom-paper/custom-paper";
 
-const ExpertsCarousel = () => {
+const TeamCarousel = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const cardsToShow = isSmallScreen ? 1 : 3;
@@ -82,7 +82,7 @@ const ExpertsCarousel = () => {
                 color: "primary.main",
               }}
             >
-              Experts
+              Team
             </Typography>
           </Typography>
         </Grid>
@@ -113,7 +113,7 @@ const ExpertsCarousel = () => {
                   unmountOnExit
                 >
                   <Grid size="grow">
-                    <ExpertCard {...expert} />
+                    <TeamCard {...expert} />
                   </Grid>
                 </Slide>
               ))}
@@ -129,4 +129,4 @@ const ExpertsCarousel = () => {
   );
 };
 
-export default ExpertsCarousel;
+export default TeamCarousel;

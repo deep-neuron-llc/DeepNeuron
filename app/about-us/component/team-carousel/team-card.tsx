@@ -7,7 +7,7 @@ interface ExpertsProp {
   linkedIn: string;
 }
 
-const ExpertCard = ({ name, linkedIn }: ExpertsProp) => {
+const TeamCard = ({ name, linkedIn }: ExpertsProp) => {
   return (
     <Paper variant="outlined" sx={{ py: 3 }}>
       <Grid container direction="column" spacing={2} alignItems="center">
@@ -27,4 +27,4 @@ const ExpertCard = ({ name, linkedIn }: ExpertsProp) => {
   );
 };
 
-export default ExpertCard;
+export default TeamCard;
