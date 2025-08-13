@@ -8,10 +8,10 @@ const Footer = () => {
   const explore = ["Imprint", "Privacy policy", "Press Kit", "Cookie settings"];
   return (
     <>
-      <Grid container spacing={2} justifyContent="center" sx={{ py: 5 }}>
+      <Grid container spacing={2} justifyContent="center" sx={{ py: 5, px: 2 }}>
         <Grid size={{ xs: 12, md: 10, xl: 7 }}>
           <Grid container spacing={2} justifyContent="space-between">
-            <Grid size={{ xs: 6 }}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <Grid
                 container
                 spacing={2}
@@ -47,9 +47,9 @@ const Footer = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid size={{ xs: 6 }}>
-              <Grid container spacing={1} justifyContent="space-evenly">
-                <Grid size="grow">
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Grid container spacing={6} justifyContent="space-evenly">
+                <Grid size={{ xs: 12, md: "grow" }}>
                   <Grid container direction="column" spacing={2}>
                     <Typography>
                       <b>Pages</b>
@@ -73,7 +73,7 @@ const Footer = () => {
                     ))}
                   </Grid>
                 </Grid>
-                <Grid size="grow">
+                <Grid size={{ xs: 12, md: "grow" }}>
                   <Grid container direction="column" spacing={2}>
                     <Typography>
                       <b>Solutions</b>
@@ -93,7 +93,7 @@ const Footer = () => {
                     ))}
                   </Grid>
                 </Grid>
-                <Grid size="auto">
+                <Grid size={{ xs: 12, md: "auto" }}>
                   <Grid container direction="column" spacing={2}>
                     <Typography>
                       <b>Explore</b>
