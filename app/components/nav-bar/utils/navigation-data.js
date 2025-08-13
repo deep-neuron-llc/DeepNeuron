@@ -10,69 +10,71 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import SchoolIcon from "@mui/icons-material/School";
 import LaunchIcon from "@mui/icons-material/Launch";
 
+const COLOR = "primary"
+
 const navigationItems = {
   home: {
     label: "Start",
     path: "/",
-    icon: <HomeIcon />,
+    icon: <HomeIcon color={COLOR}/>,
   },
   solutions: {
     label: "Solutions",
     path: "/solutions",
-    icon: <AppsIcon />,
+    icon: <AppsIcon color={COLOR}/>,
     children: [
       {
         id: uuidv4(),
         label: "VisionSense",
         description: "AI-powered image recognition.",
-        icon: <CameraAltIcon />,
+        icon: <CameraAltIcon color={COLOR} />,
         link: "",
-        linkIcon: <LaunchIcon />,
+        linkIcon: <LaunchIcon color={COLOR}/>,
       },
       {
         id: uuidv4(),
         label: "NeuroPulse",
         description: "Brainwave data analysis",
-        icon: <PsychologyIcon />,
+        icon: <PsychologyIcon color={COLOR}/>,
         link: "",
-        linkIcon: <LaunchIcon />,
+        linkIcon: <LaunchIcon color={COLOR}/>,
       },
       {
         id: uuidv4(),
         label: "SmartScribe",
         description: "Automated text summarizer",
-        icon: <EditNoteIcon />,
+        icon: <EditNoteIcon color={COLOR}/>,
         link: "",
-        linkIcon: <LaunchIcon />,
+        linkIcon: <LaunchIcon color={COLOR}/>,
       },
       {
         id: uuidv4(),
         label: "PredictIQ",
         description: "Predictive analytics engine",
-        icon: <InsightsIcon />,
+        icon: <InsightsIcon color={COLOR}/>,
         link: "",
-        linkIcon: <LaunchIcon />,
+        linkIcon: <LaunchIcon color={COLOR}/>,
       },
       {
         id: uuidv4(),
         label: "VoiceMorph ",
         description: "Real-time speech modulation",
-        icon: <RecordVoiceOverIcon />,
+        icon: <RecordVoiceOverIcon color={COLOR}/>,
         link: "",
-        linkIcon: <LaunchIcon />,
+        linkIcon: <LaunchIcon color={COLOR}/>,
       },
     ],
   },
   learning: {
     label: "Learning",
-    icon: <SchoolIcon />,
+    icon: <SchoolIcon color={COLOR}/>,
     link: "",
-    linkIcon: <LaunchIcon />,
+    linkIcon: <LaunchIcon color={COLOR}/>,
   },
   aboutUs: {
     label: "About Us",
     path: "/about-us",
-    icon: <PeopleAltIcon />,
+    icon: <PeopleAltIcon color={COLOR}/>,
   },
   contactUs: {
     label: "Get in touch",

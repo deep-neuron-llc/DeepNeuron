@@ -163,7 +163,7 @@ const NavBar = ({ window, children }: Props) => {
                               </Typography>
                             </ListItemText>
                             <Typography sx={{ ml: 3 }}>
-                              <LaunchIcon />
+                              {child.linkIcon}
                             </Typography>
                           </MenuItem>
                         ))}
