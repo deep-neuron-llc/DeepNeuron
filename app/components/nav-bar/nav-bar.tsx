@@ -61,7 +61,7 @@ const NavBar = ({ window, children }: Props) => {
         color="transparent"
         elevation={0}
         position="fixed"
-        sx={{ backgroundColor: darkMode ? undefined : "white" }}
+        sx={{ backgroundColor: darkMode ? "#121212" : "white" }}
       >
         <Grid container justifyContent={{ md: "center" }}>
           <Grid size={{ xs: 12, xl: 7 }}>
