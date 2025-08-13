@@ -24,6 +24,7 @@ import { usePathname } from "next/navigation";
 import { useCustomTheme } from "@/theme";
 import CustomDrawer from "./components/custom-drawer";
 import navigationItems from "./utils/navigation-data";
+import Footer from "../footer/footer";
 
 interface Props {
   window?: () => Window;
@@ -228,6 +229,7 @@ const NavBar = ({ window, children }: Props) => {
       <Box component="main" sx={{ width: "100%" }}>
         <Toolbar />
         {children}
+        <Footer />
       </Box>
     </Box>
   );

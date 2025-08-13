@@ -1,4 +1,3 @@
-"use client";
 import NavBar from "../components/nav-bar/nav-bar";
 import Banner from "../components/banner/banner";
 
