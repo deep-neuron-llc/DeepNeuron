@@ -5,7 +5,6 @@ import {
   Box,
   Grid,
   IconButton,
-  Paper,
   Slide,
   Typography,
   useMediaQuery,
@@ -13,11 +12,10 @@ import {
 } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { useCustomTheme } from "@/theme";
+import CustomPaper from "@/app/components/custom-paper/custom-paper";
 
 const ExpertsCarousel = () => {
   const theme = useTheme();
-  const { darkMode } = useCustomTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   const cardsToShow = isSmallScreen ? 1 : 3;
 
@@ -61,90 +59,73 @@ const ExpertsCarousel = () => {
   const currentExperts = expertsDetails.slice(index, index + cardsToShow);
 
   return (
-    <Paper
-      elevation={0}
-      sx={{
-        py: 10,
-        background: darkMode
-          ? "linear-gradient(to bottom, #1A232E 0%, #121212 100%)"
-          : undefined,
-      }}
-    >
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        sx={{ height: "100%" }}
-      >
-        <Grid size={{ xs: 12, md: 10, xl: 7 }} sx={{ p: 1 }}>
-          <Grid container spacing={4} sx={{ px: 3 }}>
-            <Grid size={{ xs: 12 }}>
-              <Typography
-                variant="h3"
-                align="center"
-                sx={{
-                  typography: { xs: "h3", md: "h2" },
-                  textTransform: "uppercase",
-                  pb: 6,
-                }}
-              >
-                Meet our{" "}
-                <Typography
-                  component="span"
-                  color="primary"
-                  sx={{
-                    typography: { xs: "h3", md: "h2" },
-                    textDecoration: "underline",
-                    textUnderlineOffset: "16px",
-                    color: "primary.main",
-                  }}
-                >
-                  Experts
-                </Typography>
-              </Typography>
-            </Grid>
-            <Grid size={{ xs: 12 }}>
-              <Box
-                sx={{
-                  position: "relative",
-                  width: "100%",
-                  overflow: "hidden",
-                }}
-              >
-                <Grid
-                  container
-                  spacing={2}
-                  justifyContent="center"
-                  alignItems="center"
-                >
-                  <IconButton color="primary" onClick={() => handlePrev(true)}>
-                    <ChevronLeftIcon />
-                  </IconButton>
+    <CustomPaper>
+      <Grid container spacing={4} sx={{ px: 3 }}>
+        <Grid size={{ xs: 12 }}>
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{
+              typography: { xs: "h3", md: "h2" },
+              textTransform: "uppercase",
+              pb: 6,
+            }}
+          >
+            Meet our{" "}
+            <Typography
+              component="span"
+              color="primary"
+              sx={{
+                typography: { xs: "h3", md: "h2" },
+                textDecoration: "underline",
+                textUnderlineOffset: "16px",
+                color: "primary.main",
+              }}
+            >
+              Experts
+            </Typography>
+          </Typography>
+        </Grid>
+        <Grid size={{ xs: 12 }}>
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              overflow: "hidden",
+            }}
+          >
+            <Grid
+              container
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+            >
+              <IconButton color="primary" onClick={() => handlePrev(true)}>
+                <ChevronLeftIcon />
+              </IconButton>
 
-                  {currentExperts.map((expert) => (
-                    <Slide
-                      key={expert.id}
-                      direction={direction}
-                      in={true}
-                      mountOnEnter
-                      unmountOnExit
-                    >
-                      <Grid size="grow">
-                        <ExpertCard {...expert} />
-                      </Grid>
-                    </Slide>
-                  ))}
+              {currentExperts.map((expert) => (
+                <Slide
+                  key={expert.id}
+                  direction={direction}
+                  in={true}
+                  mountOnEnter
+                  unmountOnExit
+                >
+                  <Grid size="grow">
+                    <ExpertCard {...expert} />
+                  </Grid>
+                </Slide>
+              ))}
 
-                  <IconButton color="primary" onClick={() => handleNext(true)}>
-                    <ChevronRightIcon />
-                  </IconButton>
-                </Grid>
-              </Box>
+              <IconButton color="primary" onClick={() => handleNext(true)}>
+                <ChevronRightIcon />
+              </IconButton>
             </Grid>
-          </Grid>
+          </Box>
         </Grid>
       </Grid>
-    </Paper>
+    </CustomPaper>
   );
 };
 

@@ -9,7 +9,7 @@ interface ExpertsProp {
 
 const ExpertCard = ({ name, linkedIn }: ExpertsProp) => {
   return (
-    <Paper variant="outlined" sx={{ p: 3 }}>
+    <Paper variant="outlined" sx={{ py: 3 }}>
       <Grid container direction="column" spacing={2} alignItems="center">
         <Avatar sx={{ height: 156, width: 156 }} />
         <Grid container direction="column" spacing={1} alignItems="center">

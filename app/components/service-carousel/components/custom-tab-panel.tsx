@@ -19,7 +19,7 @@ const CustomTabPanel = ({
       {value === index && (
         <Box sx={{ px: 2, py: 5 }}>
           <Grid container spacing={4} alignItems="center">
-            <Grid size={{ xs: 12, md: 6 }} sx={{ order: { xs: 2, md: 1 } }}>
+            <Grid size={{ xs: 12, md: 6 }} >
               <Typography variant="h4" gutterBottom>
                 {label}
               </Typography>
@@ -28,7 +28,7 @@ const CustomTabPanel = ({
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }} sx={{ order: { xs: 1, md: 2 } }}>
+            <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: "none", md: "grid" } }}>
               <Paper variant="outlined" sx={{ height: 400, p: 3 }}>
                 <Typography align="center">Image to be provided</Typography>
               </Paper>
