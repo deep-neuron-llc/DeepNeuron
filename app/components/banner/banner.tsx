@@ -31,7 +31,7 @@ const Banner = ({
       <Paper
         elevation={0}
         sx={{
-          height: home ? "95vh" : "45vh",
+          height: home ? "95vh" : "35vh",
           background: darkMode
             ? "linear-gradient(to bottom, #121212 0%, #1A232E 100%)"
             : undefined,

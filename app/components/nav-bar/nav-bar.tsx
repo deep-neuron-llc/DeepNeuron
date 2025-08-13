@@ -195,7 +195,11 @@ const NavBar = ({ window, children }: Props) => {
                     spacing={1}
                     sx={{ display: { xs: "none", sm: "flex" } }}
                   >
-                    <Button variant="contained" href="/contact">
+                    <Button
+                      component={Link}
+                      href="/contact-us"
+                      variant="contained"
+                    >
                       Get in touch
                     </Button>
                     <IconButton color="primary" onClick={toggleDarkMode}>
