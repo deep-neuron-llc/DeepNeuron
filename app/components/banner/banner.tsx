@@ -62,13 +62,13 @@ const Banner = ({
                 textDecoration: "underline",
                 textUnderlineOffset: "16px",
                 textTransform: "uppercase",
-                pb: 1.5
+                pb: 1.5,
               }}
             >
               {titleStrong}
             </Typography>
             <Typography
-              sx={{ typography: { xs: "body", md: "h5" } }}
+              sx={{ typography: ["body1", "h5"] }}
               align="center"
               gutterBottom
             >
