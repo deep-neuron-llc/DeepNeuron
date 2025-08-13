@@ -10,7 +10,7 @@ const ServiceCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setValue((prev) => (prev + 1) % serviceData.length);
-    }, 5000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
