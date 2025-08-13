@@ -4,23 +4,26 @@ import {
   Box,
   Button,
   CssBaseline,
-  Divider,
   Drawer,
   Grid,
   IconButton,
-  List,
-  ListItem,
-  ListItemButton,
+  ListItemIcon,
   ListItemText,
+  Menu,
+  MenuItem,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LaunchIcon from "@mui/icons-material/Launch";
-import { useState, ReactNode } from "react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import React, { useState, ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCustomTheme } from "@/theme";
+import CustomDrawer from "./components/custom-drawer";
+import navigationItems from "./utils/navigation-data";
 
 interface Props {
   window?: () => Window;
@@ -28,69 +31,23 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = [
-  { label: "Start", path: "/" },
-  { label: "Solutions", path: "/solutions" },
-  { label: "About Us", path: "/about-us" },
-];
 
 const NavBar = ({ window, children }: Props) => {
-  const { toggleDarkMode } = useCustomTheme();
+  const { toggleDarkMode, darkMode } = useCustomTheme();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen((p) => !p);
   };
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Box
-        component="img"
-        src="/deep-neuron-logo.svg"
-        alt="Deep Neuron Logo"
-        sx={{ height: 48, my: 1 }}
-      />
-      <Divider />
-      <List>
-        <List>
-          {navItems.map((item, index) => {
-            const isActive = pathname === item.path;
-            return (
-              <ListItem key={index} disablePadding>
-                <ListItemButton
-                  selected={isActive}
-                  component={Link}
-                  href={item.path}
-                  sx={{ textAlign: "center" }}
-                >
-                  <ListItemText primary={item.label} />
-                </ListItemButton>
-              </ListItem>
-            );
-          })}
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href=""
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary="Learning" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href=""
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary="Contact Us" />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </List>
-    </Box>
-  );
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -103,6 +60,7 @@ const NavBar = ({ window, children }: Props) => {
         color="transparent"
         elevation={0}
         position="fixed"
+        sx={{ backgroundColor: darkMode ? undefined : "white" }}
       >
         <Grid container justifyContent={{ md: "center" }}>
           <Grid size={{ xs: 12, xl: 7 }}>
@@ -115,10 +73,15 @@ const NavBar = ({ window, children }: Props) => {
               <Grid size="auto">
                 <Grid container alignItems="center">
                   <IconButton
-                    color="inherit"
+                    color="primary"
                     edge="start"
                     onClick={handleDrawerToggle}
-                    sx={{ mr: 2, display: { md: "none" } }}
+                    sx={{
+                      mx: 1,
+                      display: { md: "none" },
+                      backgroundColor: "primary.main",
+                      color: darkMode ? "black" : "white",
+                    }}
                   >
                     <MenuIcon />
                   </IconButton>
@@ -131,32 +94,96 @@ const NavBar = ({ window, children }: Props) => {
                 </Grid>
               </Grid>
               <Grid size="auto">
-                <Grid container spacing={3}>
+                <Grid container spacing={2}>
                   <Grid size="auto">
                     <Grid
                       container
-                      spacing={3}
+                      spacing={1}
                       sx={{ display: { xs: "none", md: "flex" } }}
                     >
-                      {navItems.map((item) => {
-                        const isActive = pathname === item.path;
-                        return (
-                          <Button
-                            key={item.label}
-                            component={Link}
-                            href={item.path}
-                            color="primary"
+                      <Button
+                        component={Link}
+                        href={navigationItems.home.path}
+                        color="primary"
+                        sx={{
+                          borderBottom:
+                            pathname === navigationItems.home.path
+                              ? "2px solid currentColor"
+                              : "none",
+                          borderRadius: 0,
+                        }}
+                      >
+                        {navigationItems.home.label}
+                      </Button>
+
+                      <Button
+                        onClick={handleClick}
+                        color="primary"
+                        sx={{
+                          borderBottom:
+                            pathname === navigationItems.solutions.path
+                              ? "2px solid currentColor"
+                              : "none",
+                          borderRadius: 0,
+                        }}
+                        endIcon={
+                          <KeyboardArrowDownIcon
                             sx={{
-                              borderBottom: isActive
-                                ? "2px solid currentColor"
-                                : "none",
-                              borderRadius: 0,
+                              transition: "transform 0.3s ease",
+                              transform: open
+                                ? "rotate(180deg)"
+                                : "rotate(0deg)",
                             }}
-                          >
-                            {item.label}
-                          </Button>
-                        );
-                      })}
+                          />
+                        }
+                      >
+                        {navigationItems.solutions.label}
+                      </Button>
+                      <Menu
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        sx={{ width: 400, maxWidth: "100%" }}
+                        anchorOrigin={{
+                          vertical: "bottom",
+                          horizontal: "right",
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "right",
+                        }}
+                      >
+                        {navigationItems.solutions.children.map((child) => (
+                          <MenuItem onClick={handleClose}>
+                            <ListItemIcon>{child.icon}</ListItemIcon>
+                            <ListItemText>
+                              <Typography>{child.label}</Typography>
+                              <Typography variant="body2">
+                                {child.description}
+                              </Typography>
+                            </ListItemText>
+                            <Typography sx={{ ml: 3 }}>
+                              <LaunchIcon />
+                            </Typography>
+                          </MenuItem>
+                        ))}
+                      </Menu>
+
+                      <Button
+                        component={Link}
+                        href={navigationItems.aboutUs.path}
+                        color="primary"
+                        sx={{
+                          borderBottom:
+                            pathname === navigationItems.aboutUs.path
+                              ? "2px solid currentColor"
+                              : "none",
+                          borderRadius: 0,
+                        }}
+                      >
+                        {navigationItems.aboutUs.label}
+                      </Button>
+
                       <Button endIcon={<LaunchIcon />} href="/learning">
                         Learning
                       </Button>
@@ -164,7 +191,7 @@ const NavBar = ({ window, children }: Props) => {
                   </Grid>
                   <Grid
                     container
-                    spacing={2}
+                    spacing={1}
                     sx={{ display: { xs: "none", sm: "flex" } }}
                   >
                     <Button variant="contained" href="/contact">
@@ -195,7 +222,7 @@ const NavBar = ({ window, children }: Props) => {
             },
           }}
         >
-          {drawer}
+          <CustomDrawer toggleDrawer={handleDrawerToggle} />
         </Drawer>
       </nav>
       <Box component="main" sx={{ width: "100%" }}>
