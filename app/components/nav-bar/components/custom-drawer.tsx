@@ -1,15 +1,21 @@
 "use client";
+import { useState } from "react";
 import {
   Box,
+  Button,
+  Collapse,
   Divider,
+  Grid,
   List,
   ListItem,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
 } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import navigationItems from "../utils/navigation-data";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 interface DrawerProps {
   toggleDrawer: () => void;
@@ -17,8 +23,12 @@ interface DrawerProps {
 
 const CustomDrawer = ({ toggleDrawer }: DrawerProps) => {
   const pathname = usePathname();
+  const [openSolutions, setOpenSolutions] = useState(true);
+  const toggleOpenSolutions = () => {
+    setOpenSolutions((p) => !p);
+  };
   return (
-    <Box onClick={toggleDrawer} sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: "center" }}>
       <Box
         component="img"
         src="/deep-neuron-logo.svg"
@@ -33,49 +43,70 @@ const CustomDrawer = ({ toggleDrawer }: DrawerProps) => {
               selected={pathname === navigationItems.home.path}
               component={Link}
               href={navigationItems.home.path}
-              sx={{ textAlign: "center" }}
             >
+              <ListItemIcon>{navigationItems.home.icon}</ListItemIcon>
               <ListItemText primary={navigationItems.home.label} />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton
               selected={pathname === navigationItems.solutions.path}
-              component={Link}
-              href={navigationItems.solutions.path}
-              sx={{ textAlign: "center" }}
+              onClick={toggleOpenSolutions}
             >
+              <ListItemIcon>{navigationItems.solutions.icon}</ListItemIcon>
               <ListItemText primary={navigationItems.solutions.label} />
+              <KeyboardArrowDownIcon
+                sx={{
+                  transition: "transform 0.3s ease",
+                  transform: openSolutions ? "rotate(-180deg)" : "rotate(0deg)",
+                }}
+              />
             </ListItemButton>
           </ListItem>
+          <Collapse in={openSolutions} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding sx={{ pl: 2 }}>
+              {navigationItems.solutions.children.map((child) => (
+                <ListItemButton>
+                  <ListItemIcon>{child.icon}</ListItemIcon>
+                  <ListItemText
+                    primary={child.label}
+                    secondary={child.description}
+                  />
+                  {child.linkIcon}
+                </ListItemButton>
+              ))}
+            </List>
+          </Collapse>
           <ListItem disablePadding>
             <ListItemButton
               selected={pathname === navigationItems.aboutUs.path}
               component={Link}
               href={navigationItems.aboutUs.path}
-              sx={{ textAlign: "center" }}
             >
+              <ListItemIcon>{navigationItems.aboutUs.icon}</ListItemIcon>
               <ListItemText primary={navigationItems.aboutUs.label} />
             </ListItemButton>
           </ListItem>
 
           <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href=""
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary="Learning" />
+            <ListItemButton component={Link} href="">
+              <ListItemIcon>{navigationItems.learning.icon}</ListItemIcon>
+              <ListItemText primary={navigationItems.learning.label} />
+              {navigationItems.learning.linkIcon}
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton
-              component={Link}
-              href=""
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary="Contact Us" />
-            </ListItemButton>
+            <Grid container justifyContent="center" sx={{width: "100%", pt: 3}}>
+              <Button
+                component={Link}
+                href={navigationItems.contactUs.path} 
+                size="large"
+                variant="contained"
+                sx={{ textAlign: "center" }}
+              >
+                {navigationItems.contactUs.label} 
+              </Button>
+            </Grid>
           </ListItem>
         </List>
       </List>

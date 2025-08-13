@@ -30,7 +30,7 @@ interface Props {
   children: ReactNode;
 }
 
-const drawerWidth = 240;
+const drawerWidth = 330;
 
 const NavBar = ({ window, children }: Props) => {
   const { toggleDarkMode, darkMode } = useCustomTheme();
