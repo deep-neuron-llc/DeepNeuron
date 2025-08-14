@@ -12,9 +12,11 @@ import {
   Menu,
   MenuItem,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LaunchIcon from "@mui/icons-material/Launch";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -197,14 +199,16 @@ const NavBar = ({ window, children }: Props) => {
                   >
                     <Button
                       component={Link}
-                      href="/contact-us"
+                      href={navigationItems.contactUs.path}
                       variant="contained"
                     >
                       Get in touch
                     </Button>
-                    <IconButton color="primary" onClick={toggleDarkMode}>
-                      <DarkModeIcon />
-                    </IconButton>
+                    <Tooltip title="Toggle light/dark mode">
+                      <IconButton color="primary" onClick={toggleDarkMode}>
+                        {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
+                      </IconButton>
+                    </Tooltip>
                   </Grid>
                 </Grid>
               </Grid>

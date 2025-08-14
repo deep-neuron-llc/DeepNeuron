@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   Box,
   Button,
+  ButtonGroup,
   Collapse,
   Divider,
   Grid,
@@ -11,18 +12,27 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
 } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import navigationItems from "../utils/navigation-data";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { useCustomTheme } from "@/theme";
 
 const CustomDrawer = () => {
   const pathname = usePathname();
+  const { darkMode, toggleDarkMode } = useCustomTheme();
   const [openSolutions, setOpenSolutions] = useState(true);
+
   const toggleOpenSolutions = () => {
     setOpenSolutions((p) => !p);
   };
+
   return (
     <Box sx={{ textAlign: "center" }}>
       <Box
@@ -95,9 +105,10 @@ const CustomDrawer = () => {
             <Grid
               container
               justifyContent="center"
-              sx={{ width: "100%", pt: 3 }}
+              sx={{ width: "100%", p: 3 }}
             >
               <Button
+                fullWidth
                 component={Link}
                 href={navigationItems.contactUs.path}
                 size="large"
@@ -106,6 +117,26 @@ const CustomDrawer = () => {
               >
                 {navigationItems.contactUs.label}
               </Button>
+            </Grid>
+          </ListItem>
+          <Divider />
+          <ListItem disablePadding>
+            <Grid container sx={{ width: "100%", p: 3 }}>
+              <Typography gutterBottom>Mode</Typography>
+              <ToggleButtonGroup
+                fullWidth
+                size="large"
+                value={darkMode ? "dark" : "light"}
+                exclusive
+                onChange={toggleDarkMode}
+              >
+                <ToggleButton value="light">
+                  <LightModeIcon sx={{ mr: 1 }} /> Light
+                </ToggleButton>
+                <ToggleButton value="dark">
+                  <DarkModeIcon sx={{ mr: 1 }} /> Dark
+                </ToggleButton>
+              </ToggleButtonGroup>
             </Grid>
           </ListItem>
         </List>
