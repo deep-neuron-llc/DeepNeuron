@@ -12,11 +12,10 @@ import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { useCustomTheme } from "@/theme";
 
 const Footer = () => {
-  const { darkMode } = useCustomTheme();
   const explore = ["Imprint", "Privacy policy", "Press Kit", "Cookie settings"];
   return (
     <>
@@ -152,6 +151,7 @@ const Footer = () => {
                         <YouTubeIcon />
                       </IconButton>
                     </Tooltip> */}
+
                 <Tooltip title="Visit our Facebook">
                   <IconButton
                     color="primary"
@@ -174,6 +174,16 @@ const Footer = () => {
                     }
                   >
                     <LinkedInIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Visit our Facebook">
+                  <IconButton
+                    color="primary"
+                    onClick={() =>
+                      window.open("https://www.instagram.com/deep_neuron/")
+                    }
+                  >
+                    <InstagramIcon />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="Visit our GitHub">
