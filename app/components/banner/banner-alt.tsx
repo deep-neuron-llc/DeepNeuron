@@ -2,6 +2,7 @@ import React from "react";
 import CustomPaper from "../custom-paper/custom-paper";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Link from "next/link";
+import navigationItems from "../nav-bar/utils/navigation-data";
 
 interface BannerAlt {
   alt?: boolean;
@@ -15,7 +16,7 @@ const BannerAlt = ({ alt = false }: BannerAlt) => {
           direction="column"
           justifyContent="center"
           alignItems="center"
-          sx={{ height: "50vh" }}
+          sx={{ minHeight: "50vh" }}
         >
           <Typography
             variant="h3"
@@ -25,21 +26,23 @@ const BannerAlt = ({ alt = false }: BannerAlt) => {
               textTransform: "uppercase",
               pb: 6,
             }}
+            gutterBottom
           >
             Get to{" "}
             <Typography
               component="span"
               color="primary"
+              gutterBottom
               sx={{
                 typography: { xs: "h3", md: "h2" },
                 textDecoration: "underline",
-                textUnderlineOffset: "16px",
+                textUnderlineOffset: "8px",
                 color: "primary.main",
               }}
             >
               Know us
             </Typography>{" "}
-            AND WHAT WE DO
+            & what we do
           </Typography>
           <Typography variant="h5">
             When we sit together, new ideas form. We shape those ideas into
@@ -50,7 +53,7 @@ const BannerAlt = ({ alt = false }: BannerAlt) => {
               variant="contained"
               size="large"
               component={Link}
-              href="/contact-us"
+              href={navigationItems.contactUs.path}
             >
               Get in Touch
             </Button>

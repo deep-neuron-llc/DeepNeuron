@@ -37,7 +37,7 @@ const ServiceCarousel = () => {
             sx={{
               typography: { xs: "h3", md: "h2" },
               textDecoration: "underline",
-              textUnderlineOffset: "16px",
+              textUnderlineOffset: "8px",
               color: "primary.main",
             }}
           >

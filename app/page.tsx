@@ -8,9 +8,8 @@ import {
   serviceCardData,
   industryServiceCardData,
 } from "./components/service-cards/utils/service-card-data";
-import CustomPaper from "./components/custom-paper/custom-paper";
-import { Typography } from "@mui/material";
 import BannerAlt from "./components/banner/banner-alt";
+import navigationItems from "./components/nav-bar/utils/navigation-data";
 
 export default function Home() {
   return (
@@ -24,7 +23,7 @@ export default function Home() {
           button
           buttonText="Book an appointment"
           buttonIcon={CalendarMonthIcon}
-          handler={() => console.log("Contact Us")}
+          handler={navigationItems.contactUs.path}
         />
         <ServiceCarousel />
         <ServiceCards
@@ -33,13 +32,12 @@ export default function Home() {
           title="Service & Support"
           data={serviceCardData}
         />
-        <BannerAlt />
         <ServiceCards
-          alt
           strongTitle="Industries"
           title="We serve"
           data={industryServiceCardData}
         />
+        <BannerAlt alt />
       </NavBar>
     </>
   );

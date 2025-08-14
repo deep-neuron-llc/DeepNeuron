@@ -1,6 +1,6 @@
 import React from "react";
 import CustomPaper from "../custom-paper/custom-paper";
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { ServiceData } from "./utils/service-card-data";
 import ServiceCard from "./components/service-card";
 
@@ -30,7 +30,7 @@ const ServiceCards = ({ alt, strongTitle, title, data }: ServiceCardsProps) => {
             sx={{
               typography: { xs: "h3", md: "h2" },
               textDecoration: "underline",
-              textUnderlineOffset: "16px",
+              textUnderlineOffset: "8px",
               color: "primary.main",
             }}
           >

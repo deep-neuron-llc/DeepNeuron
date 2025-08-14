@@ -3,6 +3,7 @@ import React from "react";
 import { useCustomTheme } from "@/theme";
 import { SvgIconComponent } from "@mui/icons-material";
 import { Button, Divider, Grid, Paper, Typography } from "@mui/material";
+import Link from "next/link";
 
 interface BannerProps {
   home?: boolean;
@@ -12,7 +13,7 @@ interface BannerProps {
   button?: boolean;
   buttonText?: string;
   buttonIcon?: SvgIconComponent;
-  handler?: () => void;
+  handler?: string;
 }
 
 const Banner = ({
@@ -60,7 +61,7 @@ const Banner = ({
               sx={{
                 typography: { xs: "h3", md: "h1" },
                 textDecoration: "underline",
-                textUnderlineOffset: "16px",
+                textUnderlineOffset: "8px",
                 textTransform: "uppercase",
                 pb: 1.5,
               }}
@@ -83,7 +84,8 @@ const Banner = ({
                       buttonIcon ? React.createElement(buttonIcon) : undefined
                     }
                     variant="contained"
-                    onClick={handler}
+                    component={Link}
+                    href={handler}
                   >
                     {buttonText}
                   </Button>
