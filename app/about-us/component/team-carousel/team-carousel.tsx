@@ -59,7 +59,7 @@ const TeamCarousel = () => {
   const currentExperts = expertsDetails.slice(index, index + cardsToShow);
 
   return (
-    <CustomPaper alt>
+    <CustomPaper >
       <Grid container spacing={4} sx={{ px: 3 }}>
         <Grid size={{ xs: 12 }}>
           <Typography

@@ -231,7 +231,7 @@ const NavBar = ({ window, children }: Props) => {
             },
           }}
         >
-          <CustomDrawer />
+          <CustomDrawer toggleDrawer={handleDrawerToggle} />
         </Drawer>
       </nav>
       <Box component="main" sx={{ width: "100%" }}>

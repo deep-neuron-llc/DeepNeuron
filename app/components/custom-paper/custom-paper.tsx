@@ -28,7 +28,7 @@ const CustomPaper = ({ children, alt = false }: CustomPaperProp) => {
           alignItems="center"
           sx={{ height: "100%" }}
         >
-          <Grid size={{ xs: 12, md: 10, xl: 7 }} sx={{ px: 1, py: 16 }}>
+          <Grid size={{ xs: 12, md: 10, xl: 7 }} sx={{ px: 2, py: 16 }}>
             {children}
           </Grid>
         </Grid>

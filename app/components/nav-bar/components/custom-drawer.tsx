@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   Box,
   Button,
-  ButtonGroup,
   Collapse,
   Divider,
   Grid,
@@ -24,7 +23,11 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useCustomTheme } from "@/theme";
 
-const CustomDrawer = () => {
+interface CustomDrawerProps {
+  toggleDrawer?: () => void;
+}
+
+const CustomDrawer = ({ toggleDrawer }: CustomDrawerProps) => {
   const pathname = usePathname();
   const { darkMode, toggleDarkMode } = useCustomTheme();
   const [openSolutions, setOpenSolutions] = useState(true);
@@ -40,6 +43,7 @@ const CustomDrawer = () => {
         src="/deep-neuron-logo.svg"
         alt="Deep Neuron Logo"
         sx={{ height: 48, my: 1 }}
+        onClick={toggleDrawer}
       />
       <Divider />
       <List>

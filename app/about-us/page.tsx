@@ -6,6 +6,7 @@ import OurMotivation from "./component/our-motivation";
 import OurVision from "./component/our-vision";
 import WhyUs from "./component/why-us";
 import BannerAlt from "../components/banner/banner-alt";
+import OurPartners from "./component/our-partners";
 
 const AboutUs = () => {
   return (
@@ -17,8 +18,9 @@ const AboutUs = () => {
       <WhyUs />
       <OurMotivation />
       <OurVision />
+      <OurPartners />
       <TeamCarousel />
-      <BannerAlt />
+      <BannerAlt alt/>
     </NavBar>
   );
 };
