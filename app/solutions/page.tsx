@@ -4,7 +4,7 @@ import Banner from "../components/banner/banner";
 const Solutions = () => {
   return (
     <NavBar>
-      <Banner titleStrong="Solutions" subtitle="Solution description" />
+      <Banner titleStrong="Solutions" subtitle="Under construction!" />
     </NavBar>
   );
 };

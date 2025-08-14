@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Grid, Tab, Tabs, Typography } from "@mui/material";
 import CustomTabPanel from "./components/custom-tab-panel";
 import serviceData from "./utils/service-data";
-import CustomPaper from "../custom-paper/custom-paper";
+import CustomPaper from "../../../components/custom-paper/custom-paper";
 
-const ServiceCarousel = () => {
+interface ServiceCarouselProps {
+  alt?: boolean;
+}
+
+const ServiceCarousel = ({ alt }: ServiceCarouselProps) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -20,7 +24,7 @@ const ServiceCarousel = () => {
 
   return (
     <>
-      <CustomPaper>
+      <CustomPaper alt={alt}>
         <Typography
           variant="h3"
           align="center"

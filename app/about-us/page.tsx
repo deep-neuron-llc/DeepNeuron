@@ -5,7 +5,7 @@ import TeamCarousel from "./component/team-carousel/team-carousel";
 import OurMotivation from "./component/our-motivation";
 import OurVision from "./component/our-vision";
 import WhyUs from "./component/why-us";
-import BannerAlt from "../components/banner/banner-alt";
+import BannerKnowUs from "../components/banner/banner-know-us";
 import OurPartners from "./component/our-partners";
 
 const AboutUs = () => {
@@ -20,7 +20,7 @@ const AboutUs = () => {
       <OurVision />
       <OurPartners />
       <TeamCarousel />
-      <BannerAlt alt/>
+      <BannerKnowUs alt/>
     </NavBar>
   );
 };

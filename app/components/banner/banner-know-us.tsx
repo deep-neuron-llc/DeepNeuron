@@ -4,10 +4,10 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import Link from "next/link";
 import navigationItems from "../nav-bar/utils/navigation-data";
 
-interface BannerAlt {
+interface BannerKnowUs {
   alt?: boolean;
 }
-const BannerAlt = ({ alt = false }: BannerAlt) => {
+const BannerKnowUs = ({ alt = false }: BannerKnowUs) => {
   return (
     <>
       <CustomPaper alt={alt}>
@@ -64,4 +64,4 @@ const BannerAlt = ({ alt = false }: BannerAlt) => {
   );
 };
 
-export default BannerAlt;
+export default BannerKnowUs;
