@@ -1,8 +1,10 @@
 import React from "react";
 import CustomPaper from "@/app/components/custom-paper/custom-paper";
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
+import { useCustomTheme } from "@/theme";
 
 const OurPartners = () => {
+  const { darkMode } = useCustomTheme();
   return (
     <CustomPaper alt>
       <Grid container spacing={4} justifyContent="center">
@@ -36,7 +38,11 @@ const OurPartners = () => {
             component="img"
             src="/partner-analytics-creator.svg"
             alt="Deep Neuron Logo"
-            sx={{ height: 48, my: 1, filter: "brightness(2)" }}
+            sx={{
+              height: 48,
+              my: 1,
+              filter: darkMode ? "brightness(2)" : undefined,
+            }}
           />
         </Grid>
       </Grid>
