@@ -1,50 +1,52 @@
-# 🧭 Deep Neuron Website – Starter Documentation
+<p><a href="" target="_blank" rel="noopener noreferrer"><img width=70% src="public/deep-neuron-logo.svg" alt="re-frame logo"></a></p>
 
-## 🌟 Highlights:
+## Deep Neuron
 
-- 🚀 Tech stack: Next.js, Vite, Tailwind CSS & Shadcn UI
-- 📊 Industry Insights Module  
-- 💻 Modern, Responsive UI Design  
-- 🎭 Client & Server Components with seamless integration
-- 🌐 Not deployed Yet
+Description...
 
+## 🚀 Get Started
 
-## Setup .env file
- - nothing yet
+#### Live instances
 
+- Production: [TBA]() (latest [release (TBA)]())
+- Preview: [TBA]() ([branch `main`)](https://github.com/deep-neuron-llc/deep_neuron_website))
 
-## 📦 Overview
+#### 🐳 Compose
 
-This **Next.JS** based project is a **website** for deep neuron .
+- TBA
 
----
+## 🖥️ Application stack
 
-## ⚙️ Project Setup
+- TBA
 
-### 1. Clone the Starter
+## 🔨 Development Setup Guide
 
-```bash
-git clone https://github.com/deep-neuron-llc/deep_neuron_website.git
-cd deep_neuron_website
-```
+#### Step 1: Pre-requisites
 
-### 2. Install Dependencies
+- Node.js on [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)/[Windows]([https://nodejs.org/dist/v20.17.0/](https://nodejs.org/en/blog/release/v22.18.0))
+  - Preferred to install Node Version Manager (NVM) for [Ubuntu](https://tecadmin.net/how-to-install-nvm-on-ubuntu-22-04/)/[Windows](https://github.com/coreybutler/nvm-windows/releases).
+  - Open a terminal and then type `nvm install 22.18.0` to install Node.js 22.18.0
+  - Then type `nvm use 22.18.0` to use the Node.js v22.18.0 to install node packages
+- Preferred IDE IntelliJ Ultimate [Ubuntu](https://www.golinuxcloud.com/install-maven-ubuntu/)/[Windows](https://www.jetbrains.com/de-de/idea/download/#section=windows)
+- Git on [Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-22-04#installing-git-with-default-packages)/ [Windows](https://git-scm.com/downloads)
+- (Optional) Github Desktop on [Ubuntu](https://www.linuxcapable.com/how-to-install-github-desktop-on-ubuntu-linux/)/[Windows](https://desktop.github.com/)
 
-With **npm**:
+#### Step 2: Installation Guide
 
-```bash
-npm install
-```
-
-Or with **pnpm**:
-
-```bash
-pnpm install
-```
-
-
-## 🚀 Run the App
-
-```bash
-pnpm next dev
-```
+- Clone the repository using Github Desktop or use the Git clone command in the terminal:
+  ```bash
+  git clone https://github.com/deep-neuron-llc/deep_neuron_website.git
+  ```
+- Open the terminal and type the following command to install the node packages.
+  ```bash
+  npm ci
+  ```
+  - If you get an error, try typing the `npm install` or `npm install --force` command.
+- Run the following command in the terminal to start the server.
+  ```bash
+  npm run dev
+  ```
+- Open the browser and go to the following URL.
+  ```bash
+  http://localhost:3000/
+  ```

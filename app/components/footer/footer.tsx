@@ -1,0 +1,208 @@
+import {
+  Box,
+  Divider,
+  Grid,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import React from "react";
+import navigationItems from "../nav-bar/utils/navigation-data";
+import CallIcon from "@mui/icons-material/Call";
+import EmailIcon from "@mui/icons-material/Email";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
+const Footer = () => {
+  const explore = ["Imprint", "Privacy policy", "Press Kit", "Cookie settings"];
+  return (
+    <>
+      <Divider />
+      <Grid container spacing={2} justifyContent="center" sx={{ py: 5, px: 2 }}>
+        <Grid size={{ xs: 12, md: 10, xl: 7 }}>
+          <Grid container spacing={2} justifyContent="space-between">
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Grid
+                container
+                spacing={2}
+                direction="column"
+                alignItems="flex-start"
+              >
+                <Box
+                  component="img"
+                  src="/deep-neuron-logo.svg"
+                  alt="Deep Neuron Logo"
+                  sx={{ height: 56 }}
+                />
+                <Grid size="auto">
+                  <Grid container spacing={1} alignItems="center">
+                    <CallIcon color="primary" />
+                    <Typography>+49 (0) XXXX XXXX XXX</Typography>
+                  </Grid>
+                </Grid>
+                <Grid size="auto">
+                  <Grid container spacing={1} alignItems="center">
+                    <EmailIcon color="primary" />
+                    <Typography>hello@deep-neuron.com</Typography>
+                  </Grid>
+                </Grid>
+                <Grid size="auto">
+                  <Typography>
+                    Deep Neuron LLC
+                    <br />
+                    Musterfeldstraße 1
+                    <br />
+                    00000 Musterland
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Grid container spacing={6} justifyContent="space-evenly">
+                <Grid size={{ xs: 12, md: "grow" }}>
+                  <Grid container direction="column" spacing={2}>
+                    <Typography>
+                      <b>Pages</b>
+                    </Typography>
+                    {(
+                      Object.keys(navigationItems) as Array<
+                        keyof typeof navigationItems
+                      >
+                    ).map((item, index) => (
+                      <Typography
+                        key={index}
+                        sx={{
+                          "&:hover": {
+                            color: "primary.main",
+                            cursor: "pointer",
+                          },
+                        }}
+                      >
+                        {navigationItems[item].label}
+                      </Typography>
+                    ))}
+                  </Grid>
+                </Grid>
+                <Grid size={{ xs: 12, md: "grow" }}>
+                  <Grid container direction="column" spacing={2}>
+                    <Typography>
+                      <b>Solutions</b>
+                    </Typography>
+                    {navigationItems.solutions.children.map((item) => (
+                      <Typography
+                        key={item.id}
+                        sx={{
+                          "&:hover": {
+                            color: "primary.main",
+                            cursor: "pointer",
+                          },
+                        }}
+                      >
+                        {item.label}
+                      </Typography>
+                    ))}
+                  </Grid>
+                </Grid>
+                <Grid size={{ xs: 12, md: "auto" }}>
+                  <Grid container direction="column" spacing={2}>
+                    <Typography>
+                      <b>Explore</b>
+                    </Typography>
+                    {explore.map((item, index) => (
+                      <Typography
+                        key={index}
+                        sx={{
+                          "&:hover": {
+                            color: "primary.main",
+                            cursor: "pointer",
+                          },
+                        }}
+                      >
+                        {item}
+                      </Typography>
+                    ))}
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Divider />
+      <Grid container spacing={2} justifyContent="center" sx={{ p: 2 }}>
+        <Grid size={{ xs: 12, md: 10, xl: 7 }}>
+          <Grid
+            container
+            spacing={2}
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Grid size="auto">
+              <Typography variant="body2">
+                Copyright @ Deep Neuron LLC {new Date().getFullYear()}
+              </Typography>
+            </Grid>
+            <Grid size="auto">
+              <Grid container spacing={1} alignItems="center">
+                {/* <Tooltip title="Visit our YouTube channel">
+                      <IconButton sx={{ color: "red" }} onClick={() => window.open("")}>
+                        <YouTubeIcon />
+                      </IconButton>
+                    </Tooltip> */}
+
+                <Tooltip title="Visit our Facebook">
+                  <IconButton
+                    color="primary"
+                    onClick={() =>
+                      window.open(
+                        "https://www.facebook.com/DeepNeuronConsulting"
+                      )
+                    }
+                  >
+                    <FacebookIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Visit our LinkedIn">
+                  <IconButton
+                    color="primary"
+                    onClick={() =>
+                      window.open(
+                        "https://www.linkedin.com/company/deep-neuron-c/"
+                      )
+                    }
+                  >
+                    <LinkedInIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Visit our Facebook">
+                  <IconButton
+                    color="primary"
+                    onClick={() =>
+                      window.open("https://www.instagram.com/deep_neuron/")
+                    }
+                  >
+                    <InstagramIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Visit our GitHub">
+                  <IconButton
+                    color="primary"
+                    onClick={() =>
+                      window.open("https://github.com/deep-neuron-llc")
+                    }
+                  >
+                    <GitHubIcon />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </>
+  );
+};
+
+export default Footer;
