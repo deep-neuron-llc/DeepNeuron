@@ -10,10 +10,7 @@ import React from "react";
 import navigationItems from "../nav-bar/utils/navigation-data";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import socialData from "./utils/social-data";
 
 const Footer = () => {
   const explore = ["Imprint", "Privacy policy", "Press Kit", "Cookie settings"];
@@ -146,56 +143,16 @@ const Footer = () => {
             </Grid>
             <Grid size="auto">
               <Grid container spacing={1} alignItems="center">
-                {/* <Tooltip title="Visit our YouTube channel">
-                      <IconButton sx={{ color: "red" }} onClick={() => window.open("")}>
-                        <YouTubeIcon />
-                      </IconButton>
-                    </Tooltip> */}
-
-                <Tooltip title="Visit our Facebook">
-                  <IconButton
-                    color="primary"
-                    onClick={() =>
-                      window.open(
-                        "https://www.facebook.com/DeepNeuronConsulting"
-                      )
-                    }
-                  >
-                    <FacebookIcon />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="Visit our LinkedIn">
-                  <IconButton
-                    color="primary"
-                    onClick={() =>
-                      window.open(
-                        "https://www.linkedin.com/company/deep-neuron-c/"
-                      )
-                    }
-                  >
-                    <LinkedInIcon />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="Visit our Facebook">
-                  <IconButton
-                    color="primary"
-                    onClick={() =>
-                      window.open("https://www.instagram.com/deep_neuron/")
-                    }
-                  >
-                    <InstagramIcon />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="Visit our GitHub">
-                  <IconButton
-                    color="primary"
-                    onClick={() =>
-                      window.open("https://github.com/deep-neuron-llc")
-                    }
-                  >
-                    <GitHubIcon />
-                  </IconButton>
-                </Tooltip>
+                {socialData.map((social) => (
+                  <Tooltip title={`Visit our ${social.label}`}>
+                    <IconButton
+                      color="primary"
+                      onClick={() => window.open(social.link)}
+                    >
+                      {React.createElement(social.icon)}
+                    </IconButton>
+                  </Tooltip>
+                ))}
               </Grid>
             </Grid>
           </Grid>
