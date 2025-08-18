@@ -144,7 +144,7 @@ const Footer = () => {
             <Grid size="auto">
               <Grid container spacing={1} alignItems="center">
                 {socialData.map((social) => (
-                  <Tooltip title={`Visit our ${social.label}`}>
+                  <Tooltip key={social.id} title={`Visit our ${social.label}`}>
                     <IconButton
                       color="primary"
                       onClick={() => window.open(social.link)}

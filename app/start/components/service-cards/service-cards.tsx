@@ -1,6 +1,6 @@
 import React from "react";
 import CustomPaper from "../../../components/custom-paper/custom-paper";
-import { Box, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { ServiceData } from "./utils/service-card-data";
 import ServiceCard from "./components/service-card";
 
