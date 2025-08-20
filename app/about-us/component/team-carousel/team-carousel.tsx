@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import expertsDetails from "../../utils/experts-data";
 import TeamCard from "./team-card";
 import {
@@ -24,42 +24,48 @@ const TeamCarousel = () => {
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const startAutoSlide = () => {
+  const handleNext = useCallback(
+    (manual = true) => {
+      setDirection("left");
+      setIndex((prev) =>
+        prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
+      );
+      if (manual) startAutoSlide();
+    },
+    [cardsToShow, expertsDetails.length]
+  );
+
+  const startAutoSlide = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       handleNext(false);
     }, 5000);
-  };
+  }, [handleNext]);
 
-  const handleNext = (manual = true) => {
-    setDirection("left");
-    setIndex((prev) =>
-      prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
-    );
-    if (manual) startAutoSlide();
-  };
-
-  const handlePrev = (manual = true) => {
-    setDirection("right");
-    setIndex((prev) =>
-      prev - cardsToShow < 0
-        ? Math.max(expertsDetails.length - cardsToShow, 0)
-        : prev - cardsToShow
-    );
-    if (manual) startAutoSlide();
-  };
+  const handlePrev = useCallback(
+    (manual = true) => {
+      setDirection("right");
+      setIndex((prev) =>
+        prev - cardsToShow < 0
+          ? Math.max(expertsDetails.length - cardsToShow, 0)
+          : prev - cardsToShow
+      );
+      if (manual) startAutoSlide();
+    },
+    [cardsToShow, expertsDetails.length]
+  );
 
   useEffect(() => {
     startAutoSlide();
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [cardsToShow]);
+  }, [cardsToShow, startAutoSlide]);
 
   const currentExperts = expertsDetails.slice(index, index + cardsToShow);
 
   return (
-    <CustomPaper >
+    <CustomPaper>
       <Grid container spacing={4} sx={{ px: 3 }}>
         <Grid size={{ xs: 12 }}>
           <Typography
