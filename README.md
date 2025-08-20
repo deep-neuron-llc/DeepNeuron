@@ -53,7 +53,7 @@ Description...
 
 ## 🚦 Tests
 #### 🧪 E2E Tests
-The e2e tests are in the e2e-test directory and defined as page wise. We use cypress testing framework. The docs link is [Cypress](https://docs.cypress.io/app/end-to-end-testing/writing-your-first-end-to-end-test)
+The e2e tests are in the e2e-test directory and defined as page wise. We use cypress testing framework. The docu link is [Cypress](https://docs.cypress.io/app/end-to-end-testing/writing-your-first-end-to-end-test)
 
 To run the test first start the local server with:
 ```bash
