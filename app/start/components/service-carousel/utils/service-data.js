@@ -5,6 +5,12 @@ import CloudDoneIcon from "@mui/icons-material/CloudDone";
 import StorageIcon from "@mui/icons-material/Storage";
 import TranslateIcon from "@mui/icons-material/Translate";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import AiStrategyConsultingLottie from "../../../../../public/ai-strategy-consulting.json";
+import MLModelDevelopmentLottie from "../../../../../public/ml-model-development.json";
+import MLOpsDeploymentLottie from "../../../../../public/mlops-deployment.json";
+import DataEngineeringLottie from "../../../../../public/data-engineering.json";
+import NLPSolutionsLottie from "../../../../../public/nlp-solutions.json";
+import ComputerVisionLottie from "../../../../../public/computer-vision.json";
 
 const serviceData = [
   {
@@ -16,6 +22,7 @@ const serviceData = [
         <li>Develop tailored AI adoption roadmaps aligned with company goals.</li>
         <li>Conduct ROI analysis for potential AI initiatives.</li>
         <li>Provide executive workshops and AI literacy training.</li></ul>`,
+    image: AiStrategyConsultingLottie,
   },
   {
     id: uuidv4(),
@@ -26,6 +33,7 @@ const serviceData = [
         <li>Fine-tune pre-trained models for domain-specific tasks.</li>
         <li>Apply cutting-edge algorithms for predictive analytics and automation.</li>
         <li>Perform rigorous validation and performance optimization.</li></ul>`,
+    image: MLModelDevelopmentLottie,
   },
   {
     id: uuidv4(),
@@ -36,6 +44,7 @@ const serviceData = [
         <li>Automate monitoring, versioning, and retraining of ML models.</li>
         <li>Deploy models to cloud, on-premise, or edge environments.</li>
         <li>Ensure scalability, reliability, and compliance in production AI systems.</li></ul>`,
+    image: MLOpsDeploymentLottie,
   },
   {
     id: uuidv4(),
@@ -46,6 +55,7 @@ const serviceData = [
         <li>Integrate diverse data sources into unified storage systems.</li>
         <li>Optimize data warehouses and data lakes for high performance.</li>
         <li>Apply best practices in data quality, governance, and security.</li></ul>`,
+    image: DataEngineeringLottie,
   },
   {
     id: uuidv4(),
@@ -56,6 +66,7 @@ const serviceData = [
         <li>Automate document classification, summarization, and translation.</li>
         <li>Implement sentiment analysis and entity recognition systems.</li>
         <li>Tailor language models to industry-specific vocabularies.</li></ul>`,
+    image: NLPSolutionsLottie,
   },
   {
     id: uuidv4(),
@@ -66,6 +77,7 @@ const serviceData = [
         <li>Automate quality inspection using image and video analysis.</li>
         <li>Implement facial recognition and biometric verification solutions.</li>
         <li>Develop AR/VR applications powered by image understanding.</li></ul>`,
+    image: ComputerVisionLottie,
   },
 ];
 
