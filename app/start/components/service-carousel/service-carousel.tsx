@@ -69,6 +69,7 @@ const ServiceCarousel = ({ alt }: ServiceCarouselProps) => {
               index={index}
               label={service.label}
               description={service.description}
+              image={service.image}
             />
           ))}
         </Grid>
