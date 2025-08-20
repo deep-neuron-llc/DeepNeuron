@@ -22,4 +22,5 @@ EXPOSE 3000
 
 # makes the server listen inside the container on port 3000
 CMD ["npx","next","start"]
+
     
