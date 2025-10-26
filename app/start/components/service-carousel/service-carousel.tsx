@@ -4,11 +4,8 @@ import CustomTabPanel from "./components/custom-tab-panel";
 import serviceData from "./utils/service-data";
 import CustomPaper from "../../../components/custom-paper/custom-paper";
 
-interface ServiceCarouselProps {
-  alt?: boolean;
-}
 
-const ServiceCarousel = ({ alt }: ServiceCarouselProps) => {
+const ServiceCarousel = () => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -24,12 +21,12 @@ const ServiceCarousel = ({ alt }: ServiceCarouselProps) => {
 
   return (
     <>
-      <CustomPaper alt={alt}>
+      <CustomPaper>
         <Typography
           variant="h3"
           align="center"
           sx={{
-            typography: { xs: "h3", md: "h2" },
+            typography: { xs: "h3" },
             textTransform: "uppercase",
             pb: 6,
           }}
@@ -39,7 +36,7 @@ const ServiceCarousel = ({ alt }: ServiceCarouselProps) => {
             component="span"
             color="primary"
             sx={{
-              typography: { xs: "h3", md: "h2" },
+              typography: { xs: "h3" },
               textDecoration: "underline",
               textUnderlineOffset: "8px",
               color: "primary.main",

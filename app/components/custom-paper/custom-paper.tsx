@@ -1,13 +1,18 @@
 import { useCustomTheme } from "@/theme";
-import { Grid, Paper } from "@mui/material";
+import { Container, Grid, Paper } from "@mui/material";
 import React, { ReactNode } from "react";
 
 interface CustomPaperProp {
   children: ReactNode;
   alt?: boolean;
+  small?: boolean;
 }
 
-const CustomPaper = ({ children, alt = false }: CustomPaperProp) => {
+const CustomPaper = ({
+  children,
+  alt = false,
+  small = false,
+}: CustomPaperProp) => {
   const { darkMode } = useCustomTheme();
   return (
     <>
@@ -22,16 +27,12 @@ const CustomPaper = ({ children, alt = false }: CustomPaperProp) => {
             : undefined,
         }}
       >
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          sx={{ height: "100%" }}
+        <Container
+          maxWidth="lg"
+          sx={{ px: 2, py: small ? 0 : 16, height: "100%" }}
         >
-          <Grid size={{ xs: 12, md: 10, xl: 7 }} sx={{ px: 2, py: 16 }}>
-            {children}
-          </Grid>
-        </Grid>
+          {children}
+        </Container>
       </Paper>
     </>
   );

@@ -65,14 +65,13 @@ const TeamCarousel = () => {
   const currentExperts = expertsDetails.slice(index, index + cardsToShow);
 
   return (
-    <CustomPaper>
+    <CustomPaper small>
       <Grid container spacing={4} sx={{ px: 3 }}>
         <Grid size={{ xs: 12 }}>
           <Typography
-            variant="h3"
             align="center"
             sx={{
-              typography: { xs: "h3", md: "h2" },
+              typography: { xs: "h3" },
               textTransform: "uppercase",
               pb: 6,
             }}
@@ -82,7 +81,7 @@ const TeamCarousel = () => {
               component="span"
               color="primary"
               sx={{
-                typography: { xs: "h3", md: "h2" },
+                typography: { xs: "h3" },
                 textDecoration: "underline",
                 textUnderlineOffset: "8px",
                 color: "primary.main",

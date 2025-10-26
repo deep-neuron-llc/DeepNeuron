@@ -1,10 +1,12 @@
 import React from "react";
 import CustomPaper from "@/app/components/custom-paper/custom-paper";
 import { Grid, Paper, Typography } from "@mui/material";
+import OurVisionImage from "../../../public/our-vision.json";
+import Lottie from "lottie-react";
 
 const OurVision = () => {
   return (
-    <CustomPaper>
+    <CustomPaper small>
       <Grid container spacing={4}>
         <Grid size={{ xs: 12, md: "grow" }}>
           <Typography variant="h4" gutterBottom>
@@ -16,9 +18,12 @@ const OurVision = () => {
           </Typography>
         </Grid>
         <Grid size={{ xs: 12, md: "grow" }}>
-          <Paper variant="outlined" sx={{ minHeight: 500, p: 3 }}>
-            <Typography align="center">Image to be added</Typography>
-          </Paper>
+          <Lottie
+            animationData={OurVisionImage}
+            loop={false}
+            autoplay={true}
+            style={{ height: 400 }}
+          />
         </Grid>
       </Grid>
     </CustomPaper>

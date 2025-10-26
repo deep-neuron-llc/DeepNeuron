@@ -19,7 +19,7 @@ const ServiceCards = ({ alt, strongTitle, title, data }: ServiceCardsProps) => {
           variant="h3"
           align="center"
           sx={{
-            typography: { xs: "h3", md: "h2" },
+            typography: { xs: "h3" },
             textTransform: "uppercase",
             pb: 6,
           }}
@@ -28,7 +28,7 @@ const ServiceCards = ({ alt, strongTitle, title, data }: ServiceCardsProps) => {
             component="span"
             color="primary"
             sx={{
-              typography: { xs: "h3", md: "h2" },
+              typography: { xs: "h3" },
               textDecoration: "underline",
               textUnderlineOffset: "8px",
               color: "primary.main",
