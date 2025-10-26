@@ -68,7 +68,7 @@ const navigationItems = {
   learning: {
     label: "Learning",
     icon: <SchoolIcon color={COLOR}/>,
-    link: "",
+    link: "/learning",
     linkIcon: <LaunchIcon color={COLOR}/>,
   },
   aboutUs: {

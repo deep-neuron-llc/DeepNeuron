@@ -19,14 +19,13 @@ const BannerKnowUs = ({ alt = false }: BannerKnowUs) => {
           sx={{ minHeight: "50vh" }}
         >
           <Typography
-            variant="h3"
             align="center"
+            gutterBottom
             sx={{
-              typography: { xs: "h3", md: "h2" },
+              typography: { xs: "h3" },
               textTransform: "uppercase",
               pb: 6,
             }}
-            gutterBottom
           >
             Get to{" "}
             <Typography
@@ -34,7 +33,7 @@ const BannerKnowUs = ({ alt = false }: BannerKnowUs) => {
               color="primary"
               gutterBottom
               sx={{
-                typography: { xs: "h3", md: "h2" },
+                typography: { xs: "h3" },
                 textDecoration: "underline",
                 textUnderlineOffset: "8px",
                 color: "primary.main",

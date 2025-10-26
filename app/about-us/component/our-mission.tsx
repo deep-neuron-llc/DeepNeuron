@@ -1,15 +1,20 @@
 import React from "react";
 import CustomPaper from "@/app/components/custom-paper/custom-paper";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
+import OurMissionImage from "../../../public/our-mission.json";
+import Lottie from "lottie-react";
 
-const OurMotivation = () => {
+const OurMission = () => {
   return (
-    <CustomPaper alt>
+    <CustomPaper alt small>
       <Grid container spacing={4}>
         <Grid size={{ xs: 12, md: "grow" }}>
-          <Paper variant="outlined" sx={{ minHeight: 500, p: 3 }}>
-            <Typography align="center">Image to be added</Typography>
-          </Paper>
+          <Lottie
+            animationData={OurMissionImage}
+            loop={false}
+            autoplay={true}
+            style={{ height: 400 }}
+          />
         </Grid>
         <Grid size={{ xs: 12, md: "grow" }}>
           <Typography variant="h4" gutterBottom>
@@ -25,4 +30,4 @@ const OurMotivation = () => {
   );
 };
 
-export default OurMotivation;
+export default OurMission;

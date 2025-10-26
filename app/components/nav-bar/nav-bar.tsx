@@ -3,6 +3,7 @@ import {
   AppBar,
   Box,
   Button,
+  Container,
   CssBaseline,
   Drawer,
   Grid,
@@ -65,156 +66,152 @@ const NavBar = ({ window, children }: Props) => {
         position="fixed"
         sx={{ backgroundColor: darkMode ? "#121212" : "white" }}
       >
-        <Grid container justifyContent={{ md: "center" }}>
-          <Grid size={{ xs: 12, xl: 7 }}>
-            <Grid
-              container
-              spacing={2}
-              justifyContent="space-between"
-              sx={{ p: 2 }}
-            >
-              <Grid size="auto">
-                <Grid container alignItems="center">
-                  <IconButton
-                    color="primary"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    sx={{
-                      mx: 1,
-                      display: { md: "none" },
-                      backgroundColor: "primary.main",
-                      color: darkMode ? "black" : "white",
-                    }}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <Box
-                    component="img"
-                    src="/deep-neuron-logo.svg"
-                    alt="Deep Neuron Logo"
-                    sx={{ height: 48, mr: 2 }}
-                  />
-                </Grid>
+        <Container maxWidth="lg">
+          <Grid
+            container
+            spacing={2}
+            justifyContent="space-between"
+            sx={{ p: 2 }}
+          >
+            <Grid size="auto">
+              <Grid container alignItems="center">
+                <IconButton
+                  color="primary"
+                  edge="start"
+                  onClick={handleDrawerToggle}
+                  sx={{
+                    mx: 1,
+                    display: { md: "none" },
+                    backgroundColor: "primary.main",
+                    color: darkMode ? "black" : "white",
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Box
+                  component="img"
+                  src="/deep-neuron-logo.svg"
+                  alt="Deep Neuron Logo"
+                  sx={{ height: 48, mr: 2 }}
+                />
               </Grid>
-              <Grid size="auto">
-                <Grid container spacing={2}>
-                  <Grid size="auto">
-                    <Grid
-                      container
-                      spacing={1}
-                      sx={{ display: { xs: "none", md: "flex" } }}
-                    >
-                      <Button
-                        component={Link}
-                        href={navigationItems.home.path}
-                        color="primary"
-                        sx={{
-                          borderBottom:
-                            pathname === navigationItems.home.path
-                              ? "2px solid currentColor"
-                              : "none",
-                          borderRadius: 0,
-                        }}
-                      >
-                        {navigationItems.home.label}
-                      </Button>
-
-                      <Button
-                        onClick={handleClick}
-                        color="primary"
-                        sx={{
-                          borderBottom:
-                            pathname === navigationItems.solutions.path
-                              ? "2px solid currentColor"
-                              : "none",
-                          borderRadius: 0,
-                        }}
-                        endIcon={
-                          <KeyboardArrowDownIcon
-                            sx={{
-                              transition: "transform 0.3s ease",
-                              transform: open
-                                ? "rotate(180deg)"
-                                : "rotate(0deg)",
-                            }}
-                          />
-                        }
-                      >
-                        {navigationItems.solutions.label}
-                      </Button>
-                      <Menu
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        sx={{ width: 400, maxWidth: "100%" }}
-                        anchorOrigin={{
-                          vertical: "bottom",
-                          horizontal: "right",
-                        }}
-                        transformOrigin={{
-                          vertical: "top",
-                          horizontal: "right",
-                        }}
-                      >
-                        {navigationItems.solutions.children.map((child) => (
-                          <MenuItem onClick={handleClose} key={child.id}>
-                            <ListItemIcon>{child.icon}</ListItemIcon>
-                            <ListItemText>
-                              <Typography>{child.label}</Typography>
-                              <Typography variant="body2">
-                                {child.description}
-                              </Typography>
-                            </ListItemText>
-                            <Typography sx={{ ml: 3 }}>
-                              {child.linkIcon}
-                            </Typography>
-                          </MenuItem>
-                        ))}
-                      </Menu>
-
-                      <Button
-                        component={Link}
-                        href={navigationItems.aboutUs.path}
-                        color="primary"
-                        sx={{
-                          borderBottom:
-                            pathname === navigationItems.aboutUs.path
-                              ? "2px solid currentColor"
-                              : "none",
-                          borderRadius: 0,
-                        }}
-                      >
-                        {navigationItems.aboutUs.label}
-                      </Button>
-
-                      <Button endIcon={<LaunchIcon />} href="/learning">
-                        Learning
-                      </Button>
-                    </Grid>
-                  </Grid>
+            </Grid>
+            <Grid size="auto">
+              <Grid container spacing={2}>
+                <Grid size="auto">
                   <Grid
                     container
                     spacing={1}
-                    sx={{ display: { xs: "none", sm: "flex" } }}
+                    sx={{ display: { xs: "none", md: "flex" } }}
                   >
                     <Button
                       component={Link}
-                      href={navigationItems.contactUs.path}
-                      variant="contained"
+                      href={navigationItems.home.path}
+                      color="primary"
+                      sx={{
+                        borderBottom:
+                          pathname === navigationItems.home.path
+                            ? "2px solid currentColor"
+                            : "none",
+                        borderRadius: 0,
+                      }}
                     >
-                      Get in touch
+                      {navigationItems.home.label}
                     </Button>
-                    <Tooltip title="Toggle light/dark mode">
-                      <IconButton color="primary" onClick={toggleDarkMode}>
-                        {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
-                      </IconButton>
-                    </Tooltip>
+
+                    <Button
+                      onClick={handleClick}
+                      color="primary"
+                      sx={{
+                        borderBottom:
+                          pathname === navigationItems.solutions.path
+                            ? "2px solid currentColor"
+                            : "none",
+                        borderRadius: 0,
+                      }}
+                      endIcon={
+                        <KeyboardArrowDownIcon
+                          sx={{
+                            transition: "transform 0.3s ease",
+                            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+                          }}
+                        />
+                      }
+                    >
+                      {navigationItems.solutions.label}
+                    </Button>
+                    <Menu
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      sx={{ width: 400, maxWidth: "100%" }}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                    >
+                      {navigationItems.solutions.children.map((child) => (
+                        <MenuItem onClick={handleClose} key={child.id}>
+                          <ListItemIcon>{child.icon}</ListItemIcon>
+                          <ListItemText>
+                            <Typography>{child.label}</Typography>
+                            <Typography variant="body2">
+                              {child.description}
+                            </Typography>
+                          </ListItemText>
+                          <Typography sx={{ ml: 3 }}>
+                            {child.linkIcon}
+                          </Typography>
+                        </MenuItem>
+                      ))}
+                    </Menu>
+
+                    <Button
+                      component={Link}
+                      href={navigationItems.aboutUs.path}
+                      color="primary"
+                      sx={{
+                        borderBottom:
+                          pathname === navigationItems.aboutUs.path
+                            ? "2px solid currentColor"
+                            : "none",
+                        borderRadius: 0,
+                      }}
+                    >
+                      {navigationItems.aboutUs.label}
+                    </Button>
+
+                    <Button endIcon={<LaunchIcon />} href="/learning">
+                      Learning
+                    </Button>
                   </Grid>
+                </Grid>
+                <Grid
+                  container
+                  spacing={1}
+                  sx={{ display: { xs: "none", sm: "flex" } }}
+                >
+                  <Button
+                    component={Link}
+                    href={navigationItems.contactUs.path}
+                    variant="contained"
+                  >
+                    Get in touch
+                  </Button>
+                  <Tooltip title="Toggle light/dark mode">
+                    <IconButton color="primary" onClick={toggleDarkMode}>
+                      {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
+                    </IconButton>
+                  </Tooltip>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Container>
       </AppBar>
       <nav>
         <Drawer
