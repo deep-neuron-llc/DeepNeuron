@@ -12,15 +12,15 @@
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@fontsource/roboto": "^5.2.6",
-    "@mui/icons-material": "^7.3.1",
-    "@mui/material": "^7.3.1",
-    "@mui/material-nextjs": "^7.3.0",
-    "@mui/styled-engine-sc": "^7.3.1",
+    "@fontsource/roboto": "^5.2.8",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
+    "@mui/material-nextjs": "^7.3.3",
+    "@mui/styled-engine-sc": "^7.3.3",
     "lottie-react": "^2.4.1",
-    "next": "15.4.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "next": "15.5.6",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "styled-components": "^6.1.19",
     "uuid": "^11.1.0"
   },
@@ -30,7 +30,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.4.6",
+    "eslint-config-next": "15.5.6",
     "typescript": "^5"
   }
 }
