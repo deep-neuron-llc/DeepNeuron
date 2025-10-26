@@ -1,5 +1,5 @@
 import { useCustomTheme } from "@/theme";
-import { Container, Grid, Paper } from "@mui/material";
+import { Container, Paper } from "@mui/material";
 import React, { ReactNode } from "react";
 
 interface CustomPaperProp {

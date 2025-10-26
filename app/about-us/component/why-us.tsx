@@ -1,6 +1,6 @@
 import React from "react";
 import CustomPaper from "@/app/components/custom-paper/custom-paper";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import WhyUsImage from "../../../public/why-us.json";
 import Lottie from "lottie-react";
 

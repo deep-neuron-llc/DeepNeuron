@@ -1,13 +1,11 @@
 "use client";
 import React from "react";
-import { useCustomTheme } from "@/theme";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import {
   Button,
   Container,
   Divider,
   Grid,
-  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -16,7 +14,6 @@ import navigationItems from "../nav-bar/utils/navigation-data";
 import CustomPaper from "../custom-paper/custom-paper";
 
 const HomeBanner = () => {
-  const { darkMode } = useCustomTheme();
   const title = "Transform your business with the power of";
   const titleStrong = "Ai Solutions";
   const subtitle =
