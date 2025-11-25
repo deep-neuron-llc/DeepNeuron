@@ -11,10 +11,40 @@ Description...
 - Production: [TBA]() (latest [release (TBA)]())
 - Preview: [TBA]() ([branch `main`)](https://github.com/deep-neuron-llc/deep_neuron_website))
 
-#### 🐳 Compose
+#### 🐳 Docker
 
-- TBA
+We use a multi-stage Dockerfile (build → runtime) to keep the final image small and production-only. (docs[https://docs.docker.com/build/building/multi-stage/]())
 
+- To build run with tag deep-neuron -t ```<tag-name>```
+```bash
+  docker build -t deep-neuron .
+```
+- To run the container use 
+```bash
+  docker run --name deep-neuron -p 3000:3000 deep-neuron
+```
+Here the container is build with name tag using --name ```<name of the conatiner>```. Which makes easy to stop or delete the container with the name. Port 3000 ```-p <host-port>:<container-port>``` to map the port between host and container.
+
+- After stop the container if the contianer is not deleted to run again use
+```bash
+  docker run -p 3000:3000 deep-neuron
+```
+- To stop the container 
+```bash
+  docker stop deep-neuron
+```
+or ctrl+c which might not stop the cotnainer immedietly as for now ([https://stackoverflow.com/questions/52518477/why-cant-i-always-kill-a-docker-process-with-ctrl-c]). Use ctrl+c 3 times to stop the process for now or docker stop.
+
+- To delete the container
+```bash
+  docker rm -f deep-neuron
+```
+
+- If the --name is not use to stop or delete run 
+```bash
+  docker ps -a
+```
+get the container_id or container_name then use the command with the corresponding id or name to stop or delete the container.
 ## 🖥️ Application stack
 
 - TBA
