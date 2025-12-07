@@ -1,6 +1,6 @@
 import React from "react";
 import CustomPaper from "@/app/components/custom-paper/custom-paper";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";  // Removed Paper
 import OurVisionImage from "../../../public/our-vision.json";
 import Lottie from "lottie-react";
 

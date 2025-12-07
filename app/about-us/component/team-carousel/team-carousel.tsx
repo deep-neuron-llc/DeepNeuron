@@ -24,6 +24,16 @@ const TeamCarousel = () => {
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const startAutoSlide = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setDirection("left");
+      setIndex((prev) =>
+        prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
+      );
+    }, 5000);
+  }, [cardsToShow]);
+
   const handleNext = useCallback(
     (manual = true) => {
       setDirection("left");
@@ -32,15 +42,8 @@ const TeamCarousel = () => {
       );
       if (manual) startAutoSlide();
     },
-    [cardsToShow, expertsDetails.length]
+    [cardsToShow, startAutoSlide]
   );
-
-  const startAutoSlide = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      handleNext(false);
-    }, 5000);
-  }, [handleNext]);
 
   const handlePrev = useCallback(
     (manual = true) => {
@@ -52,7 +55,7 @@ const TeamCarousel = () => {
       );
       if (manual) startAutoSlide();
     },
-    [cardsToShow, expertsDetails.length]
+    [cardsToShow, startAutoSlide]
   );
 
   useEffect(() => {
@@ -103,11 +106,24 @@ const TeamCarousel = () => {
               container
               spacing={2}
               justifyContent="center"
-              alignItems="center"
+              alignItems="stretch"
             >
-              <IconButton color="primary" onClick={() => handlePrev(true)}>
-                <ChevronLeftIcon />
-              </IconButton>
+              <Grid size="auto" sx={{ display: "flex", alignItems: "center" }}>
+                <IconButton 
+                  color="primary" 
+                  onClick={() => handlePrev(true)}
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    '& .MuiTouchRipple-root': {
+                      width: 32,
+                      height: 32,
+                    }
+                  }}
+                >
+                  <ChevronLeftIcon fontSize="small" />
+                </IconButton>
+              </Grid>
 
               {currentExperts.map((expert) => (
                 <Slide
@@ -117,15 +133,28 @@ const TeamCarousel = () => {
                   mountOnEnter
                   unmountOnExit
                 >
-                  <Grid size="grow">
+                  <Grid size={{ xs: 12, md: 3.5 }}>
                     <TeamCard {...expert} />
                   </Grid>
                 </Slide>
               ))}
 
-              <IconButton color="primary" onClick={() => handleNext(true)}>
-                <ChevronRightIcon />
-              </IconButton>
+              <Grid size="auto" sx={{ display: "flex", alignItems: "center" }}>
+                <IconButton 
+                  color="primary" 
+                  onClick={() => handleNext(true)}
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    '& .MuiTouchRipple-root': {
+                      width: 32,
+                      height: 32,
+                    }
+                  }}
+                >
+                  <ChevronRightIcon fontSize="small" />
+                </IconButton>
+              </Grid>
             </Grid>
           </Box>
         </Grid>

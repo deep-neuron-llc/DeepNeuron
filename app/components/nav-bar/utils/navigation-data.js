@@ -9,6 +9,7 @@ import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import SchoolIcon from "@mui/icons-material/School";
 import LaunchIcon from "@mui/icons-material/Launch";
+import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 
 const COLOR = "primary"
 
@@ -44,6 +45,14 @@ const navigationItems = {
         label: "SmartScribe",
         description: "Automated text summarizer",
         icon: <EditNoteIcon color={COLOR}/>,
+        link: "",
+        linkIcon: <LaunchIcon color={COLOR}/>,
+      },
+      {
+        id: uuidv4(),
+        label: "DeepCare AI ",
+        description: "AI assistant for elderly",
+        icon: <HealthAndSafetyIcon color={COLOR}/>,
         link: "",
         linkIcon: <LaunchIcon color={COLOR}/>,
       },
