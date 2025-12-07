@@ -36,22 +36,21 @@ const Footer = () => {
               <Grid size="auto">
                 <Grid container spacing={1} alignItems="center">
                   <CallIcon color="primary" />
-                  <Typography>+49 (0) XXXX XXXX XXX</Typography>
+                  <Typography>020334393076</Typography>
                 </Grid>
               </Grid>
               <Grid size="auto">
                 <Grid container spacing={1} alignItems="center">
                   <EmailIcon color="primary" />
-                  <Typography>hello@deep-neuron.com</Typography>
+                  <Typography>contact@deep-neuron.com</Typography>
                 </Grid>
               </Grid>
               <Grid size="auto">
                 <Typography>
                   Deep Neuron LLC
                   <br />
-                  Musterfeldstraße 1
+                  Duisburg, Germany
                   <br />
-                  00000 Musterland
                 </Typography>
               </Grid>
             </Grid>

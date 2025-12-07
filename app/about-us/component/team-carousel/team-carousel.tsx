@@ -23,27 +23,35 @@ const TeamCarousel = () => {
   const [direction, setDirection] = useState<"left" | "right">("left");
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const isMountedRef = useRef(true);
+
+  const startAutoSlide = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      if (isMountedRef.current) {
+        setDirection("left");
+        setIndex((prev) =>
+          prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
+        );
+      }
+    }, 5000);
+  }, [cardsToShow]);
 
   const handleNext = useCallback(
     (manual = true) => {
+      if (!isMountedRef.current) return;
       setDirection("left");
       setIndex((prev) =>
         prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
       );
       if (manual) startAutoSlide();
     },
-    [cardsToShow, expertsDetails.length]
+    [cardsToShow, startAutoSlide]
   );
-
-  const startAutoSlide = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      handleNext(false);
-    }, 5000);
-  }, [handleNext]);
 
   const handlePrev = useCallback(
     (manual = true) => {
+      if (!isMountedRef.current) return;
       setDirection("right");
       setIndex((prev) =>
         prev - cardsToShow < 0
@@ -52,15 +60,21 @@ const TeamCarousel = () => {
       );
       if (manual) startAutoSlide();
     },
-    [cardsToShow, expertsDetails.length]
+    [cardsToShow, startAutoSlide]
   );
 
   useEffect(() => {
+    isMountedRef.current = true;
     startAutoSlide();
+    
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      isMountedRef.current = false;
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
     };
-  }, [cardsToShow, startAutoSlide]);
+  }, [startAutoSlide]);
 
   const currentExperts = expertsDetails.slice(index, index + cardsToShow);
 
@@ -103,11 +117,24 @@ const TeamCarousel = () => {
               container
               spacing={2}
               justifyContent="center"
-              alignItems="center"
+              alignItems="stretch"
             >
-              <IconButton color="primary" onClick={() => handlePrev(true)}>
-                <ChevronLeftIcon />
-              </IconButton>
+              <Grid size="auto" sx={{ display: "flex", alignItems: "center" }}>
+                <IconButton 
+                  color="primary" 
+                  onClick={() => handlePrev(true)}
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    '& .MuiTouchRipple-root': {
+                      width: 32,
+                      height: 32,
+                    }
+                  }}
+                >
+                  <ChevronLeftIcon fontSize="small" />
+                </IconButton>
+              </Grid>
 
               {currentExperts.map((expert) => (
                 <Slide
@@ -117,15 +144,28 @@ const TeamCarousel = () => {
                   mountOnEnter
                   unmountOnExit
                 >
-                  <Grid size="grow">
+                  <Grid size={{ xs: 12, md: 3.5 }}>
                     <TeamCard {...expert} />
                   </Grid>
                 </Slide>
               ))}
 
-              <IconButton color="primary" onClick={() => handleNext(true)}>
-                <ChevronRightIcon />
-              </IconButton>
+              <Grid size="auto" sx={{ display: "flex", alignItems: "center" }}>
+                <IconButton 
+                  color="primary" 
+                  onClick={() => handleNext(true)}
+                  sx={{
+                    width: 32,
+                    height: 32,
+                    '& .MuiTouchRipple-root': {
+                      width: 32,
+                      height: 32,
+                    }
+                  }}
+                >
+                  <ChevronRightIcon fontSize="small" />
+                </IconButton>
+              </Grid>
             </Grid>
           </Box>
         </Grid>
