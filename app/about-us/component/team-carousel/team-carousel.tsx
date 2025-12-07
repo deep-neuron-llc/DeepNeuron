@@ -23,19 +23,23 @@ const TeamCarousel = () => {
   const [direction, setDirection] = useState<"left" | "right">("left");
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const isMountedRef = useRef(true);
 
   const startAutoSlide = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setDirection("left");
-      setIndex((prev) =>
-        prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
-      );
+      if (isMountedRef.current) {
+        setDirection("left");
+        setIndex((prev) =>
+          prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
+        );
+      }
     }, 5000);
   }, [cardsToShow]);
 
   const handleNext = useCallback(
     (manual = true) => {
+      if (!isMountedRef.current) return;
       setDirection("left");
       setIndex((prev) =>
         prev + cardsToShow >= expertsDetails.length ? 0 : prev + cardsToShow
@@ -47,6 +51,7 @@ const TeamCarousel = () => {
 
   const handlePrev = useCallback(
     (manual = true) => {
+      if (!isMountedRef.current) return;
       setDirection("right");
       setIndex((prev) =>
         prev - cardsToShow < 0
@@ -59,11 +64,17 @@ const TeamCarousel = () => {
   );
 
   useEffect(() => {
+    isMountedRef.current = true;
     startAutoSlide();
+    
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      isMountedRef.current = false;
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
     };
-  }, [cardsToShow, startAutoSlide]);
+  }, [startAutoSlide]);
 
   const currentExperts = expertsDetails.slice(index, index + cardsToShow);
 
