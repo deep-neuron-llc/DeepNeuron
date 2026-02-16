@@ -50,3 +50,20 @@ Description...
   ```bash
   http://localhost:3000/
   ```
+
+## 🚦 Tests
+#### 🧪 E2E Tests
+The e2e tests are in the e2e-test directory and defined as page wise. We use cypress testing framework. The docu link is [Cypress](https://docs.cypress.io/app/end-to-end-testing/writing-your-first-end-to-end-test)
+
+To run the test first start the local server with:
+```bash
+  npm run start
+```
+then, to run all test:
+```bash
+  npm run test:e2e
+```
+to run single file or page test:
+```bash
+  npm run test:e2e -- --config specPattern=e2e-test/<file or page like (home.cy.ts)>
+```
